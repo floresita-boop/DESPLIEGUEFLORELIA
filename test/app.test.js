@@ -15,7 +15,6 @@ function test(nombre, actual, esperado) {
   }
 }
 
-// ================== TESTS ==================
 
 test(
   "Test 1: contador regresivo",
@@ -47,6 +46,5 @@ test(
   "0 1 1 2 3"
 );
 
-// ================== RESULTADO FINAL ==================
 
 console.log(`\nResultados: ${pasadas} pasadas, ${fallidas} fallidas`);

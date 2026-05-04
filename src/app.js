@@ -104,7 +104,6 @@ function mostrarPotencia() {
         `Resultado: ${calculatePower(base, exponent)}`;
 }
 
-// ================== EJERCICIO 10 ==================
 function generateFibonacci(terms) {
     let resultado = [];
     let a = 0, b = 1;
@@ -167,6 +166,6 @@ if (typeof document !== "undefined") {
     }
 }
 
-// ================== EXPORT ==================
+
 export {contadorRegresivo,calculatePower,sumEvenNumbers, showOddNumbers, generateFibonacci
 };
