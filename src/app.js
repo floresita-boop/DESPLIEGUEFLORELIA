@@ -169,3 +169,67 @@ if (typeof document !== "undefined") {
 
 export {contadorRegresivo,calculatePower,sumEvenNumbers, showOddNumbers, generateFibonacci
 };
+
+// ================== TESTING 🧪 ==================
+
+document.getElementById("btnTestAll").addEventListener("click", () => {
+
+    const numero = 5;
+
+    const resultado = {
+        contador: contadorRegresivo(numero),
+        sumaPares: sumEvenNumbers(1, 10),
+        impares: showOddNumbers(numero),
+        potencia: calculatePower(2, 3),
+        fibonacci: generateFibonacci(numero)
+    };
+
+    document.getElementById("resultados").innerHTML = `
+        <strong>🧪 Test General</strong><br><br>
+        Contador: ${resultado.contador.join(", ")}<br>
+        Suma pares: ${resultado.sumaPares}<br>
+        Impares: ${resultado.impares}<br>
+        Potencia: ${resultado.potencia}<br>
+        Fibonacci: ${resultado.fibonacci}
+    `;
+});
+
+
+document.getElementById("btnTestOne").addEventListener("click", () => {
+
+    const test = document.getElementById("selectTest").value;
+    const numero = 5;
+
+    let salida = "";
+
+    switch (test) {
+
+        case "contador":
+            salida = contadorRegresivo(numero).join(", ");
+            break;
+
+        case "sumaPar":
+            salida = sumEvenNumbers(1, 10);
+            break;
+
+        case "impares":
+            salida = showOddNumbers(numero);
+            break;
+
+        case "potencia":
+            salida = calculatePower(2, 3);
+            break;
+
+        case "secuencia":
+            salida = generateFibonacci(numero);
+            break;
+
+        default:
+            salida = "Operación no válida";
+    }
+
+    document.getElementById("resultados").innerHTML = `
+        <strong>🧪 Test Individual (${test})</strong><br><br>
+        Resultado: ${salida}
+    `;
+});

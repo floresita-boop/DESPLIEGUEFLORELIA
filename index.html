@@ -1,9 +1,112 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cálculos CodeRider</title>
+
+    <style>
+        /* 🔥 AQUÍ PEGAS TODO TU CSS */
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            width: 420px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .input-group {
+            margin-bottom: 12px;
+        }
+
+        label {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            margin-top: 5px;
+            outline: none;
+            background: #0b1220;
+            color: white;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        #btncalcular {
+            background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+            color: black;
+        }
+
+        #btncalcular:hover {
+            transform: scale(1.02);
+        }
+
+        #btnTestAll {
+            background: #22c55e;
+            color: black;
+        }
+
+        #btnTestOne {
+            background: #f59e0b;
+            color: black;
+        }
+
+        button:hover {
+            transform: scale(1.02);
+        }
+
+        #resultados {
+            margin-top: 15px;
+            padding: 12px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 10px;
+            font-size: 14px;
+            min-height: 40px;
+        }
+
+        h3 {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        select {
+            margin-top: 10px;
+        }
+    </style>
+</head>
 </head>
 <body>
     <div class="container">
@@ -36,6 +139,21 @@
         </div>
 
         <button id="btncalcular">Calcular 🚀</button>
+        <hr>
+
+<h3>Testing 🧪</h3>
+
+<button id="btnTestAll">Test General</button>
+
+<select id="selectTest">
+    <option value="contador">Contador</option>
+    <option value="sumaPar">Suma Pares</option>
+    <option value="impares">Impares</option>
+    <option value="potencia">Potencia</option>
+    <option value="secuencia">Fibonacci</option>
+</select>
+
+<button id="btnTestOne">Test Individual</button>
 
         <div id="resultados">
             El resultado aparecerá aquí...
