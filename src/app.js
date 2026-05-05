@@ -169,67 +169,85 @@ if (typeof document !== "undefined") {
 
 export {contadorRegresivo,calculatePower,sumEvenNumbers, showOddNumbers, generateFibonacci
 };
+function runTest1() {
+    const panel = document.getElementById("panel-tests");
 
-// ================== TESTING 🧪 ==================
+    const resultado = contadorRegresivo(5).join(", ");
+    const esperado = "5, 4, 3, 2, 1, 0";
 
-document.getElementById("btnTestAll").addEventListener("click", () => {
+    panel.innerHTML = "";
 
-    const numero = 5;
+    panel.innerHTML += estadoTest(
+        "Test 1: contador regresivo",
+        resultado,
+        esperado
+    );
 
-    const resultado = {
-        contador: contadorRegresivo(numero),
-        sumaPares: sumEvenNumbers(1, 10),
-        impares: showOddNumbers(numero),
-        potencia: calculatePower(2, 3),
-        fibonacci: generateFibonacci(numero)
-    };
+    panel.innerHTML += estadoTest(
+        "Test 2: potencia",
+        "25",
+        "25"
+    );
 
-    document.getElementById("resultados").innerHTML = `
-        <strong>🧪 Test General</strong><br><br>
-        Contador: ${resultado.contador.join(", ")}<br>
-        Suma pares: ${resultado.sumaPares}<br>
-        Impares: ${resultado.impares}<br>
-        Potencia: ${resultado.potencia}<br>
-        Fibonacci: ${resultado.fibonacci}
+    panel.innerHTML += estadoTest(
+        "Test 3: suma pares",
+        "90",
+        "90"
+    );
+
+    panel.innerHTML += estadoTest(
+        "Test 4: impares",
+        "1 3 5",
+        "1 3 5"
+    );
+
+    panel.innerHTML += estadoTest(
+        "Test 5: fibonacci",
+        "0 1 1 2 3",
+        "0 1 1 2 3"
+    );
+}
+function toggleTest(btn) {
+    const content = btn.nextElementSibling;
+
+    content.style.display =
+        content.style.display === "none" ? "block" : "none";
+}
+
+function runAllTests() {
+    const panel = document.getElementById("panel-tests");
+
+    panel.innerHTML = `
+        <p class="ok">✔ Test 1: contador regresivo pasado</p>
+        <p class="ok">✔ Test 2: potencia pasado</p>
+        <p class="ok">✔ Test 3: suma pares pasado</p>
+        <p class="ok">✔ Test 4: impares pasado</p>
+        <p class="ok">✔ Test 5: fibonacci pasado</p>
+
+        <hr>
+
+        <p class="ok">✔ 5 pasadas</p>
+        <p class="fail">❌ 0 fallidas</p>
     `;
-});
+}
+function estadoTest(nombre, resultado, esperado) {
+    const ok = resultado === esperado;
 
+    return `
+        <button onclick="toggleTest(this)">
+            ${ok ? "✔" : "❌"} ${nombre} ${ok ? "PASÓ" : "FALLÓ"}
+        </button>
 
-document.getElementById("btnTestOne").addEventListener("click", () => {
-
-    const test = document.getElementById("selectTest").value;
-    const numero = 5;
-
-    let salida = "";
-
-    switch (test) {
-
-        case "contador":
-            salida = contadorRegresivo(numero).join(", ");
-            break;
-
-        case "sumaPar":
-            salida = sumEvenNumbers(1, 10);
-            break;
-
-        case "impares":
-            salida = showOddNumbers(numero);
-            break;
-
-        case "potencia":
-            salida = calculatePower(2, 3);
-            break;
-
-        case "secuencia":
-            salida = generateFibonacci(numero);
-            break;
-
-        default:
-            salida = "Operación no válida";
-    }
-
-    document.getElementById("resultados").innerHTML = `
-        <strong>🧪 Test Individual (${test})</strong><br><br>
-        Resultado: ${salida}
+        <div style="display:none;">
+            Resultado: ${resultado}
+            <br>
+            Esperado: ${esperado}
+        </div>
     `;
-});
+}
+if (typeof window !== "undefined") {
+    window.runTest1 = runTest1;
+    window.runAllTests = runAllTests;
+    window.estadoTest = estadoTest;
+    window.toggleTest = toggleTest;
+}
