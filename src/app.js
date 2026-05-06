@@ -170,42 +170,81 @@ if (typeof document !== "undefined") {
 export {contadorRegresivo,calculatePower,sumEvenNumbers, showOddNumbers, generateFibonacci
 };
 function runTest1() {
-    const panel = document.getElementById("panel-tests");
 
-    const resultado = contadorRegresivo(5).join(", ");
-    const esperado = "5, 4, 3, 2, 1, 0";
+    const panel = document.getElementById("panel-tests");
 
     panel.innerHTML = "";
 
-    panel.innerHTML += estadoTest(
-        "Test 1: contador regresivo",
-        resultado,
-        esperado
-    );
+    const operacion = document.getElementById("operacion").value;
 
-    panel.innerHTML += estadoTest(
-        "Test 2: potencia",
-        "25",
-        "25"
-    );
+    let nombre = "";
+    let resultado = "";
+    let esperado = "";
 
-    panel.innerHTML += estadoTest(
-        "Test 3: suma pares",
-        "90",
-        "90"
-    );
+    switch (operacion) {
 
-    panel.innerHTML += estadoTest(
-        "Test 4: impares",
-        "1 3 5",
-        "1 3 5"
-    );
+        case "contador":
 
-    panel.innerHTML += estadoTest(
-        "Test 5: fibonacci",
-        "0 1 1 2 3",
-        "0 1 1 2 3"
-    );
+            nombre = "contador regresivo";
+
+            resultado = contadorRegresivo(5).join(", ");
+
+            esperado = "5, 4, 3, 2, 1, 0";
+
+            break;
+
+        case "potencia":
+
+            nombre = "potencia";
+
+            resultado = calculatePower(5, 2);
+
+            esperado = 25;
+
+            break;
+
+        case "sumaPar":
+
+            nombre = "suma pares";
+
+            resultado = sumEvenNumbers(1, 10);
+
+            esperado = 30;
+
+            break;
+
+        case "impares":
+
+            nombre = "impares";
+
+            resultado = showOddNumbers(5);
+
+            esperado = "1 3 5";
+
+            break;
+
+        case "secuencia":
+
+            nombre = "fibonacci";
+
+            resultado = generateFibonacci(5);
+
+            esperado = "0 1 1 2 3";
+
+            break;
+    }
+
+    const ok = resultado == esperado;
+
+    panel.innerHTML = `
+        <h3>🧪 Test Individual</h3>
+
+        <p class="${ok ? "ok" : "fail"}">
+            ${ok ? "✔" : "❌"} 
+            ${nombre.toUpperCase()} 
+            ${ok ? "PASÓ" : "FALLÓ"}
+        </p>
+    `;
 }
 function toggleTest(btn) {
     const content = btn.nextElementSibling;
